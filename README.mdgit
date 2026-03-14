@@ -1,0 +1,1 @@
+# Netflix-app-flutter initgit add README.mdgit commit -m first commitgit branch -M maingit remote add origin https://github.com/KhalidMohomud/Netflix-app-flutter.gitgit push -u origin main
