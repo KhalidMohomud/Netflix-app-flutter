@@ -23,6 +23,9 @@ app.use(cookieParser());
 app.get("/api/v1/health", (req, res) => {
 	res.status(200).json({ success: true, dbConnected: isDatabaseConnected() });
 });
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", protectRoute, movieRoutes);
