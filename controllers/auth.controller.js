@@ -51,11 +51,12 @@ export async function signup(req, res) {
 
 		const token = await generateTokenAndSetCookie(newUser._id, res);
 		await newUser.save();
+		const { password: _password, ...safeUser } = newUser.toObject();
 
 		res.status(201).json({
 			success: true,
 			user: {
-				...newUser._doc,
+				...safeUser,
 				token:token
 			},
 		});
@@ -89,11 +90,12 @@ export async function login(req, res) {
 		}
 
 		const token = generateTokenAndSetCookie(user._id, res);
+		const { password: _password, ...safeUser } = user.toObject();
 
 		res.status(200).json({
 			success: true,
 			user: {
-				...user._doc,
+				...safeUser,
 				token: token
 			},
 		});
